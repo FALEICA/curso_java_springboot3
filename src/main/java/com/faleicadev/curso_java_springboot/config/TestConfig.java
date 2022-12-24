@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.faleicadev.curso_java_springboot.entities.Order;
 import com.faleicadev.curso_java_springboot.entities.User;
+import com.faleicadev.curso_java_springboot.entities.enums.OrderStatus;
 import com.faleicadev.curso_java_springboot.repositories.OrderRepository;
 import com.faleicadev.curso_java_springboot.repositories.UserRepository;
 
@@ -32,9 +33,9 @@ public class TestConfig implements CommandLineRunner {
 		User u3 = new User(null, "Jhon", "jhon@gmail.com", "999995566", "123456");
 		User u4 = new User(null, "Anne", "anne@gmail.com", "988995585", "123456");
 		
-		Order o1 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), u1);
-		Order o2 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), u2);
-		Order o3 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), u1);
+		Order o1 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), OrderStatus.DELIVERY, u1);
+		Order o2 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), OrderStatus.DELIVERY, u2);
+		Order o3 = new Order(null, Instant.parse("2022-12-23T21:22:00Z"), OrderStatus.SHIPPED, u1);
 		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
