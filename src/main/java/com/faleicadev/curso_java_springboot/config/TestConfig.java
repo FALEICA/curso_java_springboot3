@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.faleicadev.curso_java_springboot.entities.Category;
 import com.faleicadev.curso_java_springboot.entities.Order;
+import com.faleicadev.curso_java_springboot.entities.OrderItem;
 import com.faleicadev.curso_java_springboot.entities.Product;
 import com.faleicadev.curso_java_springboot.entities.User;
 import com.faleicadev.curso_java_springboot.entities.enums.OrderStatus;
 import com.faleicadev.curso_java_springboot.repositories.CategoryRepository;
+import com.faleicadev.curso_java_springboot.repositories.OrderItemRepository;
 import com.faleicadev.curso_java_springboot.repositories.OrderRepository;
 import com.faleicadev.curso_java_springboot.repositories.ProductRepository;
 import com.faleicadev.curso_java_springboot.repositories.UserRepository;
@@ -34,6 +36,10 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
+	
 	
 	
 
@@ -81,6 +87,15 @@ public class TestConfig implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+		
+		
+		OrderItem itm1 = new OrderItem(o1, prd1, 2, prd1.getPrice());
+		OrderItem itm2 = new OrderItem(o1, prd3, 1, prd4.getPrice());
+		OrderItem itm3 = new OrderItem(o2, prd3, 2, prd1.getPrice());
+		OrderItem itm4 = new OrderItem(o3, prd5, 2, prd5.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(itm1, itm2, itm3, itm4));
+				
 	}
 	
 	
