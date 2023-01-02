@@ -13,7 +13,7 @@ import com.faleicadev.curso_java_springboot.entities.Product;
 import com.faleicadev.curso_java_springboot.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/product")
+@RequestMapping(value = "/products")
 public class ProductResource {
 	
 	@Autowired
